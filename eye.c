@@ -8,9 +8,9 @@ int main(){
  for (i=0; i<n; i++){
   for (j=0; j<n; j++){
    if (i == j){
-    printf("1");
+    printf("1 ");
    }else {
-    printf("0");
+    printf("0 ");
    }
   }
   printf("\n");
