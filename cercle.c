@@ -16,7 +16,7 @@ int main(){
 /* Filling in: */
  for (i=0; i<n; i++){
   for (j=0; j<n; j++){
-   double d = sqrt(pow(x-i, 2) + pow(y-i,2));
+   double d = sqrt(pow(x-i, 2) + pow(y-j,2));
    if (d < r){
     printf("R ");
    }else {
