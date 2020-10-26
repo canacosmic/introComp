@@ -5,7 +5,10 @@ int main(){
 
  int n = 100;
  int i, j = 0;
+
+/* Def. matrix: */
  int matrix[n][n];
+ int matrixRot[n][n]; 
 
  /* Circle 1: Centred on: */
  int x1 = 25;
@@ -26,31 +29,32 @@ int main(){
 
    /* Adding two circles: */
    if (d1 < r){
-    printf("R ");
-   }else {
-    printf("- ");
-   }
+    matrix[i][j] = 1;
+    }else{
+     matrix[i][j] = 0;
+    }
 
-   if (d2<r){
-     printf("R ");
-   }else {
-    printf("- ");
-   }
+
+   if (d2 < r){
+    matrix[i][j] = 1;
+    }else{
+     matrix[i][j] = 0;
+    }
+
    /* Adding Rectangle: */
    if ((i > 55  && i < 75) && (j > 25  && j < 75)) {
-    printf("R ");
-   }else{
-    printf("- ");
-   }
-
-   /* Rotation (90º): */
-   for (i=0; i<n; i++){
-    for (j=0; j<n; j++){
-     matrix[i][j] = matrix[j][(n-1)-i];
+    matrix[i][j] = 1;
+    }else{
+     matrix[i][j] = 0;
     }
-   }
   }
   printf("\n");
  }
+ /*for (i=0; i<n; i++){
+  for (j=0; j<n; j++){
+   matrixRot[i][j] = matrix[j][n-1-i];
+  }
+ }
+ printf("\n");*/
  return 0;
 }

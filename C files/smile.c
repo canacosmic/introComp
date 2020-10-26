@@ -6,6 +6,10 @@ int main(){
  int n = 100;
  int i, j = 0;
 
+ /* Def. Matrix: */
+ int matrix[n][n];
+ int matrixRot[n][n]
+
  /* Circle 1: Centred on: */
  int x1 = 25;
  int y1 = 25;
