@@ -8,6 +8,7 @@ int main(){
  int matrix[n][n];
  int matrixR90L[n][n];
  int matrixR90R[n][n];
+ int matrixR90UD[n][n];
  int i,j=0;
 
  /* Circle 1: Centred on: */
@@ -19,7 +20,7 @@ int main(){
  int y2 = 75;
 
  /* Both With Radius: */
- double r = 10.0;
+ double r = 10.0; 
 
 /* Filling in: */
  for (i=0; i<n; i++){
@@ -30,11 +31,11 @@ int main(){
 
    if (d1 < r){
     matrix[i][j]=1;
-   }
+    }
 
    else if (d2 < r){
      matrix[i][j]=1;
-   }
+     }
    
 
    else if ((i > 55  && i < 75) && (j > 25  && j < 75)) {
@@ -49,9 +50,13 @@ int main(){
   for (j=0; j<n; j++){
    
    /* Rotates 90º left:*/
-   matrixR90L[i][j]= matrix[j][n-1-i];
+   matrixR90L[i][j] = matrix[j][n-1-i];
+   /* Upside Down */
+   matrixR90UD[i][j] = matrixR90L[j][n-1-i]; 
+   /* Rotates 90ºR */
+   matrixR90R[i][j] = matrixR90UD[j][n-1-i];
 
-   printf("%d  ", matrixR90L[i][j]);
+   printf("%d  ", matrixR90R[i][j]);
   }
   printf("\n");
  }
