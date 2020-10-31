@@ -48,7 +48,7 @@ int main(){
   }
  }
 
-/* TRANSFORMING MATRIX[I][J] */
+/* TRANSFORMING */
 
  /* Rotating 90º left */ 
  for (i=0; i<n; i++){
