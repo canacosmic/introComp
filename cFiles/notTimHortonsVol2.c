@@ -30,7 +30,7 @@ int main(){
 
   /*** INICIA PROGRAMA ***/
   printf("Escoga el producto deseado.Presione el botón A para café espresso, B para americano, C para capuccino o D para chocolate​.\n​");
-  scanf(​"%c"​, &eleccion);
+  scanf("%c", &eleccion);
 
   /* CASO ESPRESSO */
   if (eleccion == espresso){
