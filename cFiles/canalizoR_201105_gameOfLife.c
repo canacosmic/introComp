@@ -9,8 +9,8 @@ int main(){
     int temp[n][n];
     int i,j,x,y;
     int vecino;
-    int fila;
-    int col;
+    int fila = 25;
+    int col = 25;
 
 
 
@@ -34,14 +34,7 @@ int main(){
             for(col = 0; col < n; col++){
 
                 /* PROBLEM con el if!!! analizando los vecinos */
-                vecino = 0;
-                for(x = -1; x < 2; x++){
-                    for(y = -1; y < 2; y++){
-                        if(x != 0 && y != 0 && pro[(fila)][(col)] == 1){
-                            vecino++;
-                        }
-                    }
-                }
+                vecino = /* Aqui agregar suma de indices */;
 
                 /* Condiciones iterando sobre cada indice (checando si esta viva o no) */
                 if(pro[fila][col] == 1){
