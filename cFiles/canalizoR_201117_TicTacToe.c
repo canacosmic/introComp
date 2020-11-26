@@ -18,21 +18,47 @@ int main(){
  int eleccionHumano;
  int eleccionCompu;
  char marcado;/* 'X' para humano 'O' para compu */
+ int jugador = 1;
+ int i;
+ char continuar;
 
- /* Ciclo while */
-   /* mientras que "checarGanador" retorne 2...*/
- creandoTablero();
- printf("Elige la casilla a marcar: ");
- scanf("%d", &eleccionHumano);
- llenandoTablero();/* con la eleccion del humano*/
- /*eleccion compu */
- /*Llenar tablero con eleccion compu*/
+ i = checarGanador();
 
- /* si "checarGanador" retorna 1...*/
-  /* printf("el gandor es: la compu/Humano\n")*/
+ do {
+   /* decidiendo jugador */
+   if (jugador % 2==1){
+     jugador = 1;
+   }else{
+     jugador = 2;
+   }
 
- /* si "checarGanador" retorna 0...*/
-  /*printf("Empate\n")*/
+   /*Jugadas compu*/
+   if (jugador == 2){
+     printf("presione enter para que la compu tire la compu\n");
+     scanf("", &continuar);
+     eleccionCompu = randr()%9;
+     marcado = 'O';
+     llenandoTablero(eleccionCompu);
+     jugador ++;
+   }
+
+   /*Jugada de Humano*/
+   if (jugador == 1){
+     printf("Ingrese la casilla a marcar:");
+     scanf("%d", &eleccionHumano);
+     marcado = 'X';
+     llenandoTablero(eleccionHumano);
+     jugador ++;
+     }
+   } while(i == 2);
+
+   if (i == 0){
+     printf("Empate!");
+   }else if (i == 1){
+     printf("Ha ganado el jugador %d, ¡Felicidades!", jugador);
+   }else{
+     printf("Hubo un error. reinice el programa y vuelva a jugar");
+   }
 
  return 0;
 }
@@ -117,4 +143,3 @@ int checarGanador(){
   return 2; 
  }
 }
- /* Funcion donde la compu elije una casilla*/
