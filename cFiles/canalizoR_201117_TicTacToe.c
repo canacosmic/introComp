@@ -36,9 +36,9 @@ int main(){
    if (jugador == 2){
      printf("presione enter para que la compu tire la compu\n");
      scanf("", &continuar);
-     eleccionCompu = randr()%9;
+     eleccionCompu = rand()%9;
      marcado = 'O';
-     llenandoTablero(eleccionCompu);
+     llenandoTablero(&eleccionCompu, marcado);
      jugador ++;
    }
 
@@ -47,7 +47,7 @@ int main(){
      printf("Ingrese la casilla a marcar:");
      scanf("%d", &eleccionHumano);
      marcado = 'X';
-     llenandoTablero(eleccionHumano);
+     llenandoTablero(&eleccionHumano, marcado);
      jugador ++;
      }
    } while(i == 2);
@@ -103,7 +103,7 @@ void llenandoTablero(int eleccion, char marcado){
  }else if (eleccion==9 && tablero[9]=='9'){
   tablero[9] = marcado;
  }else {
-  printf("Whoops! La casilla elejida no existe.\n")
+  printf("Whoops! La casilla elejida no existe.\n");
  }
 }
 
