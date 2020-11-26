@@ -25,6 +25,8 @@ int main(){
  i = checarGanador();
 
  do {
+
+   creandoTablero();
    /* decidiendo jugador */
    if (jugador % 2==1){
      jugador = 1;
@@ -140,6 +142,7 @@ int checarGanador(){
  }else if (tablero[1] != '1' && tablero[2] != '2' && tablero[3] != '3' && tablero[4] != '4' && tablero[5] != '5' && tablero[6] != '6' && tablero[7] != '7' && tablero[8] != '8' && tablero[9] != '9') {
   return 0;
  }else {
+   /* si aun hay casillas disponibles...*/
   return 2; 
  }
 }
