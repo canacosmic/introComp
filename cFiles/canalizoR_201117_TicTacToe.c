@@ -3,10 +3,10 @@
 /* Variables Globales */
 char tablero[10] = {'0','1','2','3','4','5','6','7','8','9'};
 
-/* Inicializando funciones */
+/* Declarando funciones */
 void creandoTablero();
-void llenandoTablero();
-int checarGanador(int, char);
+void llenandoTablero(int, char);
+int checarGanador();
 
 
 
@@ -27,6 +27,7 @@ int main(){
  do {
 
    creandoTablero();
+
    /* decidiendo jugador */
    if (jugador % 2==1){
      jugador = 1;
@@ -36,11 +37,12 @@ int main(){
 
    /*Jugadas compu*/
    if (jugador == 2){
-     printf("presione enter para que la compu tire la compu\n");
-     scanf("", &continuar);
+     printf("presione enter para que la compu tire\n");
+     scanf('\0', continuar);
      eleccionCompu = rand()%9;
      marcado = 'O';
-     llenandoTablero(&eleccionCompu, marcado);
+     llenandoTablero(eleccionCompu, marcado);
+     checarGanador();
      jugador ++;
    }
 
@@ -49,7 +51,8 @@ int main(){
      printf("Ingrese la casilla a marcar:");
      scanf("%d", &eleccionHumano);
      marcado = 'X';
-     llenandoTablero(&eleccionHumano, marcado);
+     llenandoTablero(eleccionHumano, marcado);
+     checarGanador();
      jugador ++;
      }
    } while(i == 2);
