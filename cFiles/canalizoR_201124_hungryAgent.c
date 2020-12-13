@@ -20,7 +20,6 @@ char copy[25][25];
 /* Declarando funciones */
 char creandoArena(char espacioLibre, char agente, char comida, char pared);
 char analizandoespacios(char x);
-
 void imprimirArena(char x);
 
 int main(){
@@ -33,6 +32,8 @@ int main(){
 
  imprimirArena(x);
 /*fin while*/
+/*Printf(felicidades el agente completó su mision!\n)*/
+/*Printf(En esta ocasión lo logró en %d movimientos*/
 
 
  return 0;
@@ -116,7 +117,7 @@ char analizandoespacios(char x){
           arena[i][j+1] = agente;
           agentPoints++;
           arena[i][j] = espacioLibre;
-          contadorPasos;
+          contadorPasos++;
         }
 
         /*** Checar entorno PARED y acción ***/
@@ -156,6 +157,7 @@ char analizandoespacios(char x){
           */
          /* Contador de pasos++ */
         }
+        /*Else...(si es espacio libre...)*/
       }
     }
   }

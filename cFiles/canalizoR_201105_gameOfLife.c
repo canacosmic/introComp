@@ -23,6 +23,7 @@ int main(){
     }
     /* INICA MEGA CICLO */
     for(i = 0; i < ciclos; i++){
+        
         for(fila = 0; fila < n; fila++){
             for(col = 0; col < n; col++){
                 temp[fila][col] = 0;
