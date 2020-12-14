@@ -87,7 +87,7 @@ char analizandoespacios(char x){
     }
   }
 
-  /* Analizis de indices y reacciones del agente */
+  /* Analisis de indices y reacciones del agente */
   for(i=0;i<n;i++){
     for(j=0;j<n;j++){
 
