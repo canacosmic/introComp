@@ -8,11 +8,12 @@ int numParedes = 25;
 int agentPoints = 0;
 int contadorPasos = 0;
 int puntajeGanador = 5;
+int randMovPared;
 char espacioLibre = '-';
 char agente = '@';
 char comida = '*';
 char pared = '|';
-char x;
+char x,o ;
 char arena[25][25];
 char copy[25][25];
 
@@ -20,22 +21,20 @@ char copy[25][25];
 /* Declarando funciones */
 char creandoArena(char espacioLibre, char agente, char comida, char pared);
 char analizandoespacios(char x);
-void imprimirArena(char x);
+void imprimirArena(char o);
 
 int main(){
  srand((unsigned) time(NULL));
 
  x = creandoArena(espacioLibre, agente, comida, pared);
 
- /* While puntaje < PuntajeWin*/
- analizandoespacios(x);
-
- imprimirArena(x);
-/*fin while*/
+ while (agentPoints<puntajeGanador){
+    o = analizandoespacios(x);
+    printf("\n");
+    imprimirArena(o);
+  }
 /*Printf(felicidades el agente completó su mision!\n)*/
 /*Printf(En esta ocasión lo logró en %d movimientos*/
-
-
  return 0;
 }
 
@@ -83,7 +82,7 @@ char analizandoespacios(char x){
 
   for(i=0;i<n;i++){
     for(j=0;j<n;j++){
-      copy[i][j]=arena[i][j];
+      copy[i][j]= arena[i][j];
     }
   }
 
@@ -94,79 +93,113 @@ char analizandoespacios(char x){
       /*** Ubicando al agente en el mapa ***/
       if(arena[i][j]==agente){
 
-        /*** Checar entorno COMIDA y acción ***/
+        /*** ANALISIS COMIDAS VECINAS ***/
         if(arena[i-1][j]==comida){
-          arena[i-1][j] = agente;
+          copy[i-1][j] = agente;
           agentPoints++;
-          arena[i][j] = espacioLibre;
+          copy[i][j] = espacioLibre;
           contadorPasos++;
-        }
-        if(arena[i+1][j] == comida){
-          arena[i+1][j] = agente;
+        }else if(arena[i+1][j] == comida){
+          copy[i+1][j] = agente;
           agentPoints++;
-          arena[i][j] = espacioLibre;
+          copy[i][j] = espacioLibre;
           contadorPasos++;
-        }
-        if(arena[i][j-1] == comida){
-          arena[i][j-1] = agente;
+        }else if(arena[i][j-1] == comida){
+          copy[i][j-1] = agente;
           agentPoints++;
-          arena[i][j] = espacioLibre;
+          copy[i][j] = espacioLibre;
           contadorPasos++;
-        }
-        if(arena[i][j+1] == comida){
-          arena[i][j+1] = agente;
+        }else if(arena[i][j+1] == comida){
+          copy[i][j+1] = agente;
           agentPoints++;
-          arena[i][j] = espacioLibre;
+          copy[i][j] = espacioLibre;
           contadorPasos++;
+        /*** PAREDES VECINAS ***/
+        }else if(arena[i-1][j] == pared){
+          randMovPared = rand()%3;
+          if (randMovPared == 0){
+            copy[i+1][j] = agente;
+            contadorPasos++;
+          }else if (randMovPared == 1){
+            copy[i][j+1] = agente;
+            contadorPasos++;
+          }else if (randMovPared == 2){
+            copy[i][j-1] = agente;
+            contadorPasos++;
+          }else{
+            printf("Hubo un error al elegir el siguiente paso");
+          }
+          contadorPasos++;
+        }else if(arena[i+1][j] == pared){
+          randMovPared = rand()%3;
+          if (randMovPared == 0){
+            copy[i-1][j] = agente;
+            contadorPasos++;
+          }else if (randMovPared == 1){
+            copy[i][j+1] = agente;
+            contadorPasos++;
+          }else if (randMovPared == 2){
+            copy[i][j-1] = agente;
+            contadorPasos++;
+          }else{
+            printf("Hubo un error al elegir el siguiente paso");
+          }
+          contadorPasos++;
+        }else if(arena[i][j-1] == pared){
+          randMovPared = rand()%3;
+          if (randMovPared == 0){
+            copy[i+1][j] = agente;
+            contadorPasos++;
+          }else if (randMovPared == 1){
+            copy[i-1][j] = agente;
+            contadorPasos++;
+          }else if (randMovPared == 2){
+            copy[i][j+1] = agente;
+            contadorPasos++;
+          }else{
+            printf("Hubo un error al elegir el siguiente paso");
+          }
+          contadorPasos++;
+        }else if(arena[i][j+1] == pared){
+          randMovPared = rand()%3;
+          if (randMovPared == 0){
+            copy[i+1][j] = agente;
+            contadorPasos++;
+          }else if (randMovPared == 1){
+            copy[i-1][j] = agente;
+            contadorPasos++;
+          }else if (randMovPared == 2){
+            copy[i][j-1] = agente;
+            contadorPasos++;
+          /*** ESPACIOS LIBRES ***/ 
+          }else{
+            randMovPared = rand()%4;
+            if (randMovPared == 0){
+              copy[i+1][j] = agente;
+              contadorPasos++;
+            }else if(randMovPared == 1){
+              copy[i-1][j] = agente;
+              contadorPasos++;
+            }else if(randMovPared == 2){
+              copy[i][j+1] = agente;
+              contadorPasos++;
+            }else if(randMovPared == 3){
+              copy[i][j-1] = agente;
+              contadorPasos++;
+            }else{
+              printf("Error");
+            }
+          }
         }
-
-        /*** Checar entorno PARED y acción ***/
-        if(arena[i-1][j] == pared){
-          /* 
-          Movimientos validos:
-          [i+1][j]
-          [i][j+1]
-          [i][j-1]
-          */
-          /* contador de pasos++ */
-        }
-        if(arena[i+1][j] == pared){
-          /* 
-          Movimientos validos:
-          [i-1][j]
-          [i][j+1]
-          [i][j-1]
-          */
-          /* contador de pasos++ */
-        }
-        if(arena[i][j-1] == pared){
-          /* 
-          Movimientos validos:
-          [i+1][j]
-          [i-1][j]
-          [i][j+1]
-          */
-          /* contador de pasos++ */
-        }
-        if(arena[i][j+1] == pared){
-          /* 
-          Movimientos validos:
-          [i+1][j]
-          [i-1][j]
-          [i][j-1]
-          */
-         /* Contador de pasos++ */
-        }
-        /*Else...(si es espacio libre...)*/
       }
     }
   }
 }
 
-
-void imprimirArena(char x){
+void imprimirArena(char o){
  for(i=0;i<n;i++){
   for(j=0;j<n;j++){
+    arena[i][j] = copy[i][j];
    printf("%c ", arena[i][j]);
   }
   printf("\n");
