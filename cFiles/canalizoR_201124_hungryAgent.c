@@ -76,13 +76,14 @@ char creandoArena(char espacioLibre, char agente, char comida, char pared){
  }
  /* Reiniciando contador*/
  contador = 0;
+ 
 }
 
-char analizandoespacios(char x){
-
-  for(i=0;i<n;i++){
-    for(j=0;j<n;j++){
-      copy[i][j]= arena[i][j];
+void analizandoespacios(){
+  /* Creando matriz de modificaciones (copia de la original)*/
+  for(i=0; i<n; i++){
+    for(j=0; j<n; j++){
+      copy[i][j] = arena[i][j];
     }
   }
 
@@ -91,10 +92,10 @@ char analizandoespacios(char x){
     for(j=0;j<n;j++){
 
       /*** Ubicando al agente en el mapa ***/
-      if(arena[i][j]==agente){
+      if(arena[i][j] == agente){
 
         /*** ANALISIS COMIDAS VECINAS ***/
-        if(arena[i-1][j]==comida){
+        if(arena[i-1][j] ==comida){
           copy[i-1][j] = agente;
           agentPoints++;
           copy[i][j] = espacioLibre;
@@ -130,6 +131,9 @@ char analizandoespacios(char x){
             printf("Hubo un error al elegir el siguiente paso");
           }
           contadorPasos++;
+
+
+
         }else if(arena[i+1][j] == pared){
           randMovPared = rand()%3;
           if (randMovPared == 0){
@@ -145,6 +149,10 @@ char analizandoespacios(char x){
             printf("Hubo un error al elegir el siguiente paso");
           }
           contadorPasos++;
+
+
+
+
         }else if(arena[i][j-1] == pared){
           randMovPared = rand()%3;
           if (randMovPared == 0){
@@ -160,6 +168,8 @@ char analizandoespacios(char x){
             printf("Hubo un error al elegir el siguiente paso");
           }
           contadorPasos++;
+
+
         }else if(arena[i][j+1] == pared){
           randMovPared = rand()%3;
           if (randMovPared == 0){

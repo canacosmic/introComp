@@ -3,13 +3,13 @@
 int main(){
  /* Variables locales */
  char original[10][10];
- char copia[25][25];
+ char copia[10][10];
  char espacioLibre = '-';
  char espacioVisitado = '.';
  char agente ='@';
  char comida = '*';
  char pared = '|';
- int i,j,q,r,n=10;
+ int i,j,q,r,n = 10;
  int numComidas = n;
  int numParedes = n;
  int randMovPared;
@@ -77,26 +77,26 @@ int main(){
      /* checar COMIDAS entonrno y mover */
      if(original[fila-1][columna] == comida){
       copia[fila-1][columna] = agente;
-      agentPoints++;
       copia[fila][columna] = espacioVisitado;
-      contadorPasos++;
       
      }else if(original[fila+1][columna] == comida){
       copia[fila+1][columna] = agente;
-      agentPoints++;
       copia[fila][columna] = espacioVisitado;
-      contadorPasos++;
+  
      }else if(original[fila][columna-1] == comida){
       copia[i][j-1] = agente;
-      agentPoints++;
+      
       copia[fila][columna] = espacioVisitado;
-      contadorPasos++;
+      
      }else if(original[fila][columna+1] == comida){
       copia[fila][columna+1] = agente;
-      agentPoints++;
+      
       copia[fila][columna] = espacioVisitado;
-      contadorPasos++;
-      /* checar Paredes entorno y mover */
+      
+
+
+      /* checar Paredes entorno y mover */  
+      
      }else if(original[fila-1][columna] == pared){
       randMovPared = rand()%3;
       if (randMovPared == 0){
